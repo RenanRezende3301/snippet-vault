@@ -83,15 +83,6 @@ Validado localmente com:
 - Acesso via porta alternativa para evitar conflito local
 - Tratamento explicito para erro de porta ocupada
 
-## Possiveis evolucoes
-
-- Edicao de snippets existentes
-- Syntax highlighting
-- Ordenacao por data ou linguagem
-- Modo escuro/claro persistente
-- Compartilhamento por link
-- Integracao com backend ou sincronizacao em nuvem
-
 ## Licenca
 
 MIT
