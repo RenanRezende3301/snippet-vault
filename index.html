@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snippet Vault</title>
+    <meta
+      name="description"
+      content="Gerenciador de snippets para desenvolvedores com busca, filtros e exportação."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Projeto para GitHub</p>
+          <h1>Snippet Vault</h1>
+          <p class="hero-copy">
+            Um app para organizar snippets de codigo, links uteis e templates
+            de comando. Tudo salvo no navegador com busca instantanea, favoritos
+            e exportacao em JSON.
+          </p>
+        </div>
+        <div class="hero-card">
+          <p class="hero-card-label">Resumo rapido</p>
+          <div class="stats-grid">
+            <article>
+              <span id="totalSnippets">0</span>
+              <small>Snippets</small>
+            </article>
+            <article>
+              <span id="favoriteSnippets">0</span>
+              <small>Favoritos</small>
+            </article>
+            <article>
+              <span id="languageCount">0</span>
+              <small>Linguagens</small>
+            </article>
+          </div>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel form-panel">
+          <div class="section-heading">
+            <h2>Novo snippet</h2>
+            <p>Adicione blocos de codigo, notas ou comandos frequentes.</p>
+          </div>
+
+          <form id="snippetForm" class="snippet-form">
+            <label>
+              Titulo
+              <input type="text" id="title" name="title" maxlength="60" required />
+            </label>
+
+            <label>
+              Linguagem
+              <input
+                type="text"
+                id="language"
+                name="language"
+                placeholder="JavaScript, Bash, SQL..."
+                maxlength="24"
+                required
+              />
+            </label>
+
+            <label>
+              Tags
+              <input
+                type="text"
+                id="tags"
+                name="tags"
+                placeholder="api, utilitario, regex"
+              />
+            </label>
+
+            <label>
+              Descricao
+              <textarea id="description" name="description" rows="3"></textarea>
+            </label>
+
+            <label>
+              Codigo
+              <textarea id="code" name="code" rows="8" required></textarea>
+            </label>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Salvar snippet</button>
+              <button type="reset" class="btn btn-secondary">Limpar</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel content-panel">
+          <div class="toolbar">
+            <div class="section-heading">
+              <h2>Biblioteca</h2>
+              <p>Filtre por termo, linguagem ou favoritos.</p>
+            </div>
+
+            <div class="toolbar-actions">
+              <input
+                type="search"
+                id="searchInput"
+                placeholder="Buscar por titulo, codigo ou tag"
+              />
+              <select id="languageFilter">
+                <option value="all">Todas as linguagens</option>
+              </select>
+              <button class="btn btn-secondary" id="favoritesToggle" type="button">
+                Mostrar favoritos
+              </button>
+            </div>
+          </div>
+
+          <div class="toolbar footer-toolbar">
+            <button class="btn btn-secondary" id="seedButton" type="button">
+              Carregar exemplos
+            </button>
+            <button class="btn btn-secondary" id="exportButton" type="button">
+              Exportar JSON
+            </button>
+            <label class="import-label btn btn-secondary">
+              Importar JSON
+              <input type="file" id="importInput" accept="application/json" hidden />
+            </label>
+          </div>
+
+          <div id="activeFilters" class="active-filters"></div>
+          <div id="snippetList" class="snippet-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="snippetCardTemplate">
+      <article class="snippet-card">
+        <div class="snippet-card-top">
+          <div>
+            <p class="snippet-language"></p>
+            <h3 class="snippet-title"></h3>
+          </div>
+          <button class="favorite-button" type="button" aria-label="Favoritar"></button>
+        </div>
+        <p class="snippet-description"></p>
+        <pre class="snippet-code"></pre>
+        <div class="snippet-tags"></div>
+        <div class="snippet-card-actions">
+          <button class="btn btn-secondary copy-button" type="button">Copiar</button>
+          <button class="btn btn-danger delete-button" type="button">Excluir</button>
+        </div>
+      </article>
+    </template>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

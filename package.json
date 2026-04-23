@@ -1,0 +1,17 @@
+{
+  "name": "snippet-vault",
+  "version": "1.0.0",
+  "description": "Snippet manager for developers built with vanilla JavaScript.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "javascript",
+    "frontend",
+    "localstorage",
+    "snippets"
+  ],
+  "author": "",
+  "license": "MIT"
+}
